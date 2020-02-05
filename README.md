@@ -1,4 +1,4 @@
-![Docker Image CI](https://github.com/tadeugr/aks-mgmt/workflows/Docker%20Image%20CI/badge.svg)
+![Docker Image CI](https://github.com/tadeugr/aks-mgmt/workflows/Docker%20Image%20CI/badge.svg?branch=master&event=push)
 
 # General info
 
