@@ -30,6 +30,6 @@ jobs:
         args: push ${GITHUB_REPOSITORY}:$(date +%s)
 
     - name: Push latest to docker hub
-        uses: actions-hub/docker@master
-        with:
-          args: push ${GITHUB_REPOSITORY}:latest
+      uses: actions-hub/docker@master
+      with:
+        args: push ${GITHUB_REPOSITORY}:latest
