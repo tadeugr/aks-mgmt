@@ -2,6 +2,7 @@
 
 # General info
 
+* Docker image from ubuntu:18.04
 * Default locale: en_US.UTF-8
 * Default shell: zsh
 * Kubectl autocomplete enabled (also with an alias `k`)
