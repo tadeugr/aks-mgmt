@@ -9,6 +9,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+
+    - uses: actions/checkout@master
+
+    - name: Build tag
+      run: docker build -t ${GITHUB_REPOSITORY}:$(date +%s) .
+
+    - name: Tag :latest
+      run: docker tag ${GITHUB_REPOSITORY}:latest
+
+    - name: Login to docker hub
+      uses: actions-hub/docker/login@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Push tag to docker hub
+      uses: actions-hub/docker@master
+      with:
+        args: push ${GITHUB_REPOSITORY}:$(date +%s)
+
+    - name: Push latest to docker hub
+        uses: actions-hub/docker@master
+        with:
+          args: push ${GITHUB_REPOSITORY}:latest
