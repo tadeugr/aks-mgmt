@@ -12,13 +12,14 @@ jobs:
 
     - uses: actions/checkout@master
 
+    - name: Show env
+      run: env
+
     - name: Build tag
-      env:
-        now: $(date +%s)
-      run: docker build -t ${GITHUB_REPOSITORY}:$now .
+      run: docker build -t ${GITHUB_REPOSITORY}:$GITHUB_RUN_NUMBER .
 
     - name: Tag :latest
-      run: docker tag ${GITHUB_REPOSITORY}:$now ${GITHUB_REPOSITORY}:latest
+      run: docker tag ${GITHUB_REPOSITORY}:$GITHUB_RUN_NUMBER ${GITHUB_REPOSITORY}:latest
 
     - name: Login to docker hub
       uses: actions-hub/docker/login@master
@@ -29,7 +30,7 @@ jobs:
     - name: Push tag to docker hub
       uses: actions-hub/docker@master
       with:
-        args: push ${GITHUB_REPOSITORY}:$now
+        args: push ${GITHUB_REPOSITORY}:$GITHUB_RUN_NUMBER
 
     - name: Push latest to docker hub
       uses: actions-hub/docker@master
