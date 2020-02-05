@@ -15,18 +15,15 @@ RUN apt-get update -qq && \
       jq \
       zsh \
       wget \
-      locales \
-
-RUN locale-gen en_US.UTF-8
-
-RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
-RUN az aks install-cli
-
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true
-RUN chsh -s /usr/bin/zsh root
-RUN cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-RUN sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc > ~/.zshrc
-RUN echo 'source <(kubectl completion zsh)' >> ~/.zshrc
-RUN echo 'alias k=kubectl' >> ~/.zshrc
-RUN echo 'complete -F __start_kubectl k' >> ~/.zshrc
+    locales && \
+    locale-gen en_US.UTF-8 && \
+    curl -sL https://aka.ms/InstallAzureCLIDeb | bash  && \
+    az aks install-cli  && \
+    wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true  && \
+    chsh -s /usr/bin/zsh root  && \
+    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc  && \
+    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc > ~/.zshrc  && \
+    echo 'source <(kubectl completion zsh)' >> ~/.zshrc  && \
+    echo 'alias k=kubectl' >> ~/.zshrc  && \
+    echo 'complete -F __start_kubectl k' >> ~/.zshrc  && \
 CMD [ "zsh" ]
