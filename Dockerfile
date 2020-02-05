@@ -15,8 +15,8 @@ RUN apt-get update -qq && \
       nano \
       jq \
       zsh \
-      wget && \
-    locales && \
+      wget \
+      locales && \
     locale-gen en_US.UTF-8 && \
     curl -sL https://aka.ms/InstallAzureCLIDeb | bash  && \
     az aks install-cli  && \
