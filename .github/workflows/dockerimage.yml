@@ -12,10 +12,9 @@ jobs:
 
     - uses: actions/checkout@master
 
-    env:
-      now: $(date +%s)
-
     - name: Build tag
+      env:
+        now: $(date +%s)
       run: docker build -t ${GITHUB_REPOSITORY}:$now .
 
     - name: Tag :latest
