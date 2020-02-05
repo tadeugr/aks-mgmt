@@ -3,6 +3,7 @@ FROM ubuntu:18.04
 RUN apt-get update -qq && \
     apt-get install -qqy --no-install-recommends\
       apt-transport-https \
+      apt-utils \
       build-essential \
       curl \
       ca-certificates \
@@ -25,5 +26,5 @@ RUN apt-get update -qq && \
     sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' ~/.zshrc > ~/.zshrc  && \
     echo 'source <(kubectl completion zsh)' >> ~/.zshrc  && \
     echo 'alias k=kubectl' >> ~/.zshrc  && \
-    echo 'complete -F __start_kubectl k' >> ~/.zshrc  && \
+    echo 'complete -F __start_kubectl k' >> ~/.zshrc
 CMD [ "zsh" ]
