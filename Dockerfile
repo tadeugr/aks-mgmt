@@ -21,11 +21,6 @@ RUN apt-get update -qq && \
     curl -sL https://aka.ms/InstallAzureCLIDeb | bash  && \
     az aks install-cli  && \
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true  && \
-    chsh -s /usr/bin/zsh root  && \
-    cp ~/.oh-my-zsh/templates/zshrc.zsh-template /root/.zshrc  && \
-    sed -i 's/ZSH_THEME="robbyrussell"/ZSH_THEME="agnoster"/g' /root/.zshrc  && \
-    echo 'source <(kubectl completion zsh)' >>/root/.zshrc  && \
-    echo 'alias k=kubectl' >>/root/.zshrc  && \
-    echo 'complete -F __start_kubectl k' >>/root/.zshrc && \
-    echo 'll='ls -lh' >>/root/.zshrc
+    chsh -s /usr/bin/zsh root
+COPY zshrc /root/.zshrc
 CMD [ "zsh" ]
