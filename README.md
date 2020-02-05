@@ -1,5 +1,17 @@
 ![Docker Image CI](https://github.com/tadeugr/aks-mgmt/workflows/Docker%20Image%20CI/badge.svg?branch=master&event=push)
 
+# How to docker run
+
+```
+cd path/to/your/project/folder
+
+docker run \
+  -it \
+  --name aks-mgmt \
+  -v "`pwd`":/app \
+  tadeugr/aks-mgmt:latest
+```
+
 # General info
 
 * Docker image from ubuntu:18.04
