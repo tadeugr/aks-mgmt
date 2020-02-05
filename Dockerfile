@@ -18,9 +18,11 @@ RUN apt-get update -qq && \
       wget \
       locales && \
     locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8 && \
     curl -sL https://aka.ms/InstallAzureCLIDeb | bash  && \
     az aks install-cli  && \
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true  && \
     chsh -s /usr/bin/zsh root
 COPY zshrc /root/.zshrc
+ENV LC_ALL="en_US.UTF-8"
 CMD [ "zsh" ]
