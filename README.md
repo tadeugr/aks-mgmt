@@ -1,3 +1,5 @@
+![Docker Image CI](https://github.com/tadeugr/aks-mgmt/workflows/Docker%20Image%20CI/badge.svg)
+
 # General info
 
 * Default locale: en_US.UTF-8
