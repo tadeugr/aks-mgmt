@@ -22,7 +22,16 @@ RUN apt-get update -qq && \
     curl -sL https://aka.ms/InstallAzureCLIDeb | bash  && \
     az aks install-cli  && \
     wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh || true  && \
-    chsh -s /usr/bin/zsh root
+    chsh -s /usr/bin/zsh root && \
+    (
+      set -x; cd "$(mktemp -d)" &&
+      curl -fsSLO "https://github.com/kubernetes-sigs/krew/releases/download/v0.3.3/krew.{tar.gz,yaml}" &&
+      tar zxvf krew.tar.gz &&
+      KREW=./krew-"$(uname | tr '[:upper:]' '[:lower:]')_amd64" &&
+      "$KREW" install --manifest=krew.yaml --archive=krew.tar.gz &&
+      "$KREW" update
+    ) && \
+    kubectl krew install whoami
 COPY zshrc /root/.zshrc
 ENV LC_ALL="en_US.UTF-8"
 CMD [ "zsh" ]
