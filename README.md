@@ -6,6 +6,16 @@ https://hub.docker.com/repository/docker/tadeugr/aks-mgmt
 
 # How to docker run
 
+## Quick and simple
+
+```
+docker run -it --rm tadeugr/aks-mgmt
+```
+
+## Mount a volume
+
+If you have a local folder that need be used inside the container.
+
 ```
 cd path/to/your/project/folder
 
@@ -13,7 +23,7 @@ docker run \
   -it \
   --name aks-mgmt \
   -v "`pwd`":/app \
-  tadeugr/aks-mgmt:latest
+  tadeugr/aks-mgmt
 ```
 
 # General info
