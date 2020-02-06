@@ -28,6 +28,8 @@ docker run \
 * curl
 * git
 * jq
+* krew
+  * whoami
 * kubectl
 * locales
 * lsb-release
