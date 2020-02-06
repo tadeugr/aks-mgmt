@@ -2,7 +2,7 @@
 
 # Get kubeconfig from Service Account
 #
-# Required env vars
+# Required env vars (set using export command)
 #   server Kubernetes API endpoint
 #   clusterName Cluster name that will be used in kubeconfig context
 #   saName Service Acount name
@@ -37,10 +37,10 @@ fi
 # END validations
 
 echo "Setting variables"
-secretName=$(kubectl -n $saNs get secret | grep $saName | awk '{print $1}')
-ca=$(kubectl -n $saNs get secret $secretName -o jsonpath='{.data.ca\.crt}')
-token=$(kubectl -n $saNs get secret $secretName -o jsonpath='{.data.token}')
-tokenDecode=$(echo $token | base64 --decode)
+secretName=$(kubectl -n $saNs get secret | grep $saName | awk '{print $1}') || exit 1
+ca=$(kubectl -n $saNs get secret $secretName -o jsonpath='{.data.ca\.crt}') || exit 1
+token=$(kubectl -n $saNs get secret $secretName -o jsonpath='{.data.token}') || exit 1
+tokenDecode=$(echo $token | base64 --decode) || exit 1
 
 echo "Creating temporary folder"
 cd "$(mktemp -d)" || exit 1
