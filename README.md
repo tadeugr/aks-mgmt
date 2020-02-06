@@ -53,3 +53,7 @@ docker run \
 * vim
 * wget
 * zsh
+  * Theme: agnoster
+  * Plugins:
+    * git
+    * kubectl
