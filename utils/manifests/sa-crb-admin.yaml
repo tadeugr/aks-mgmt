@@ -1,0 +1,19 @@
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: REPLACE-YOUR-SA-HERE
+  namespace: REPLACE-YOUR-SA-NS-HERE
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: REPLACE-YOUR-CRB-HERE
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cluster-admin
+subjects:
+- kind: ServiceAccount
+  name: REPLACE-YOUR-SA-NS-HERE
+  namespace: REPLACE-YOUR-SA-NS-HERE
