@@ -17,6 +17,7 @@ RUN echo "Start apt-get update" && \
       rlwrap \
       vim \
       nano \
+      sudo \
       jq \
       zsh \
       wget \

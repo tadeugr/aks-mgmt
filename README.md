@@ -12,6 +12,17 @@ https://hub.docker.com/repository/docker/tadeugr/aks-mgmt
 docker run -it --rm tadeugr/aks-mgmt
 ```
 
+## Export env vars
+
+```
+docker run \
+  -it \
+  --rm \
+  -e AKS_RG='my-aks-resource-group' \
+  -e AKS_NAME='my-aks-cluster' \
+  tadeugr/aks-mgmt
+```
+
 ## Mount a volume
 
 If you have a local folder that need be used inside the container.

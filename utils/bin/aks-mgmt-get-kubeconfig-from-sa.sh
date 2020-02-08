@@ -53,7 +53,7 @@ clusters:
 - name: $CLUSTER_NAME
   cluster:
     certificate-authority-data: ${ca}
-    server: ${server}
+    server: ${SERVER}
 contexts:
 - name: $CLUSTER_NAME
   context:
