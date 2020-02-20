@@ -21,6 +21,7 @@ RUN echo "Start apt-get update" && \
       jq \
       zsh \
       wget \
+      ssh \
       locales && \
     echo "Finish apt-get install" && \
 
