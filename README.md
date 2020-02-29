@@ -61,6 +61,7 @@ docker run \
 * nano
 * python-all
 * rlwrap
+* ssh
 * vim
 * wget
 * zsh
