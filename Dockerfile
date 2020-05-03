@@ -22,6 +22,11 @@ RUN echo "Start apt-get update" && \
       zsh \
       wget \
       ssh \
+      iputils-ping \
+      dnsutils \
+      telnet \
+      tcpdump \
+      nginx \
       locales && \
     echo "Finish apt-get install" && \
 
@@ -59,5 +64,9 @@ RUN echo "Start apt-get update" && \
 
 ADD zshrc /root/.zshrc
 ADD utils /root/utils
+ADD web/config/default-8080 /etc/nginx/sites-enabled/default-8080
+ADD web/html/html-8080 /var/www/html-8080
+ADD start.sh /start.sh
+RUN chmod +rx /start.sh
 ENV LC_ALL="en_US.UTF-8"
-CMD [ "zsh" ]
+CMD [ "/start.sh" ]

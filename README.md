@@ -37,6 +37,17 @@ docker run \
   tadeugr/aks-mgmt
 ```
 
+## Expose ports
+
+```
+docker run \
+  -it \
+  --name aks-mgmt \
+  -p 80:80 \
+  -p 8080:8080 \
+  tadeugr/aks-mgmt
+```
+
 # General info
 
 * Docker image from ubuntu:18.04
@@ -51,7 +62,9 @@ docker run \
 * build-essential
 * ca-certificates
 * curl
+* dnsutils
 * git
+* iputils-ping
 * jq
 * krew
   * whoami
@@ -59,9 +72,14 @@ docker run \
 * locales
 * lsb-release
 * nano
+* nginx
+  * One server listening no port 80
+  * One server listening no port 8080
 * python-all
 * rlwrap
 * ssh
+* tcpdump
+* telnet
 * vim
 * wget
 * zsh
